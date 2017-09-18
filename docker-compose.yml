@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  uwsgi:
+    build: ./django
+    command: /usr/local/bin/uwsgi --socket :5000 --module webapp.wsgi
+    volumes:
+      - "/home/ryuno/Desktop/docker-django/webapp/:/webapp"
+
+  nginx:
+    build: ./nginx
+    depends_on:
+      - uwsgi
+    volumes_from:
+      - uwsgi
+    ports:
+      - "0.0.0.0:8000:80"
