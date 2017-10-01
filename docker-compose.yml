@@ -5,7 +5,7 @@ services:
     build: ./django
     command: /usr/local/bin/uwsgi /uwsgi.ini 
     volumes:
-      - "/home/ryuno/Desktop/docker-django/webapp/:/webapp"
+      - "/home/ryuno/Desktop/docker-django/webapp/:/webapp:z"
 
   nginx:
     build: ./nginx
